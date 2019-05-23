@@ -80,6 +80,7 @@ class TraefikConsulProxy(TKvProxy):
             "prefix": self.kv_traefik_prefix,
             "watch": True,
         }
+        self.static_config["providersThrottleDuration"] = 0
 
     def _launch_traefik(self, config_type):
         os.environ["CONSUL_HTTP_TOKEN"] = self.kv_password
