@@ -8,6 +8,7 @@ env:
   global:
     - ASYNC_TEST_TIMEOUT=15
     - ETCDCTL_API=3
+    - CODECOV_TOKEN="69416718-8fd8-44e2-a099-bb90c4332cb3"
 
 # installing dependencies
 before_install:
