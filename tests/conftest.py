@@ -25,6 +25,7 @@ async def autohttps_toml_proxy():
         traefik_letsencrypt_email="jovyan@jupyter.test",
         traefik_letsencrypt_domains=["jupyter.test"],
         traefik_acme_server="https://0.0.0.0:14000/dir",
+        traefik_log_level="INFO"
     )
 
     await proxy.start()
@@ -225,14 +226,14 @@ def external_toml_proxy():
     traefik_process.wait()
 
 
-@pytest.fixture(scope="session", autouse=True)
-def etcd():
-    etcd_proc = subprocess.Popen("etcd", stdout=None, stderr=None)
-    yield etcd_proc
+# @pytest.fixture(scope="session", autouse=True)
+# def etcd():
+#     etcd_proc = subprocess.Popen("etcd", stdout=None, stderr=None)
+#     yield etcd_proc
 
-    etcd_proc.kill()
-    etcd_proc.wait()
-    shutil.rmtree(os.getcwd() + "/default.etcd/")
+#     etcd_proc.kill()
+#     etcd_proc.wait()
+#     shutil.rmtree(os.getcwd() + "/default.etcd/")
 
 
 @pytest.fixture(scope="function", autouse=True)
